@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src=js/jquery-3.3.1.min.js></script>
+<script type="text/javascript" src=js/data12.js></script>
+    <meta charset="utf-8">
+    <title>日毛差经营分析</title>
+</head>
+<body>
+    <!-- 图表容器 DOM -->
+    <div id="container" style="width: 1000px;height:600px;"></div>
+    <!-- 引入 highcharts.js -->
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script>
+
+    var chart = Highcharts.chart('container', {
+    	title: {
+    		text: title+month+'月度日毛差经营分析'
+    	},
+    	subtitle: {
+    		text: ''
+    	},
+    	yAxis: {
+    		title: {
+    			text: ''
+    		}
+    	},
+    	xAxis: {
+    		title: {
+    			text: ''
+    		},
+    		categories: day,
+    	},
+    	legend: {
+    		layout: 'vertical',
+    		align: 'right',
+    		verticalAlign: 'middle'
+    	},
+    	plotOptions: {
+    		series: {
+    			label: {
+    				connectorAllowed: false
+    			},
+    		}
+    	},
+    	series: [{
+    		name: '当日毛差',
+    		data: currentGasBalance,
+    		color:'#000000'
+    	}, {
+    		name: '输血线毛差',
+    		data: redLine,
+    		color:'#FF2D2D'
+    	},{
+    		name: '盈亏平衡毛差',
+    		data: yellowLine,
+    		color:'#F9F900'
+    	}, {
+    		name: '预算达标毛差',
+    		data: blueLine,
+    		color:'#2828FF'
+    	},{
+    		name: '投资回报毛差',
+    		data: greenLine,
+    		color:'#28FF28'
+    	}],
+    });
+    
+    </script>
+</body>
+</html>
