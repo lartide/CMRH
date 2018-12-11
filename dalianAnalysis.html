@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src=js/jquery-3.3.1.min.js></script>
+<script type="text/javascript" src=js/data12.js></script>
+    <meta charset="utf-8">
+    <title>日经营分析</title>
+</head>
+<body>
+    <!-- 图表容器 DOM -->
+    <div style="width:1200px; height:300px;">
+   <div id="container1" style="float:left;width: 600px;height:300px;"></div>
+    <div id="container2" style="float:left;width: 600px;height:300px;"></div>
+</div>
+     <div style="width:1200px; height:300px;">
+   <div id="container3" style="float:left;width: 600px;height:300px;"></div>
+    <div id="container4" style="float:left;width: 600px;height:300px;"></div>
+</div>
+    <!-- 引入 highcharts.js -->
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script>
+
+    var chart1 = Highcharts.chart('container1', {
+    	title: {
+    		text: title+month+'月度日经营分析'
+    	},
+    	subtitle: {
+    		text: ''
+    	},
+    	yAxis: {
+    		title: {
+    			text: ''
+    		}
+    	},
+    	xAxis: {
+    		title: {
+    			text: ''
+    		},
+    		categories: day,
+    	},
+    	legend: {
+    		layout: 'vertical',
+    		align: 'right',
+    		verticalAlign: 'middle'
+    	},
+    	plotOptions: {
+    		series: {
+    			label: {
+    				connectorAllowed: false
+    			},
+    		}
+    	},
+    	series: [{
+    		name: '当日售气量',
+    		data: gasSale
+    	}, {
+    		name: '当日利润',
+    		data: gasAmount
+    	}],
+    });
+    
+    var chart2 = Highcharts.chart('container2', {
+    	title: {
+    		text: title+month+'月度日毛差经营分析'
+    	},
+    	subtitle: {
+    		text: ''
+    	},
+    	yAxis: {
+    		title: {
+    			text: ''
+    		}
+    	},
+    	xAxis: {
+    		title: {
+    			text: ''
+    		},
+    		categories: day,
+    	},
+    	legend: {
+    		layout: 'vertical',
+    		align: 'right',
+    		verticalAlign: 'middle'
+    	},
+    	plotOptions: {
+    		series: {
+    			label: {
+    				connectorAllowed: false
+    			},
+    		}
+    	},
+    	series: [{
+    		name: '当日毛差',
+    		data: currentGasBalance,
+    		color:'#000000'
+    	}, {
+    		name: '输血线毛差',
+    		data: redLine,
+    		color:'#FF2D2D'
+    	},{
+    		name: '盈亏平衡毛差',
+    		data: yellowLine,
+    		color:'#F9F900'
+    	}, {
+    		name: '预算达标毛差',
+    		data: blueLine,
+    		color:'#2828FF'
+    	},{
+    		name: '投资回报毛差',
+    		data: greenLine,
+    		color:'#28FF28'
+    	}],
+    });
+    var chart3 = Highcharts.chart('container3', {
+    	title: {
+    		text: title+month+'月度累计日经营分析'
+    	},
+    	subtitle: {
+    		text: ''
+    	},
+    	yAxis: {
+    		title: {
+    			text: ''
+    		}
+    	},
+    	xAxis: {
+    		title: {
+    			text: ''
+    		},
+    		categories: day,
+    	},
+    	legend: {
+    		layout: 'vertical',
+    		align: 'right',
+    		verticalAlign: 'middle'
+    	},
+    	plotOptions: {
+    		series: {
+    			label: {
+    				connectorAllowed: false
+    			},
+    		}
+    	},
+    	series: [{
+    		name: '累计售气量',
+    		data: sumGasSale
+    	}, {
+    		name: '累计利润',
+    		data: sumGasAmount
+    	}],
+    });
+    var chart4 = Highcharts.chart('container4', {
+    	title: {
+    		text: title+month+'月度日累计经营分析'
+    	},
+    	subtitle: {
+    		text: ''
+    	},
+    	yAxis: {
+    		title: {
+    			text: ''
+    		}
+    	},
+    	xAxis: {
+    		title: {
+    			text: ''
+    		},
+    		categories: day,
+    	},
+    	legend: {
+    		layout: 'vertical',
+    		align: 'right',
+    		verticalAlign: 'middle'
+    	},
+    	plotOptions: {
+    		series: {
+    			label: {
+    				connectorAllowed: false
+    			},
+    		}
+    	},
+    	series: [{
+    		name: '累计利润',
+    		data: currentSumBalance,
+    		color:'#000000'
+    	}, {
+    		name: '累计输血线',
+    		data: sumRedLine,
+    		color:'#FF2D2D'
+    	},{
+    		name: '累计盈亏平衡线',
+    		data: sumYellowLine,
+    		color:'#F9F900'
+    	}, {
+    		name: '累计预算达标线',
+    		data: sumBlueLine,
+    		color:'#2828FF'
+    	},{
+    		name: '累计投资回报线',
+    		data: sumGreenLine,
+    		color:'#28FF28'
+    	}],
+    });
+    
+    
+    </script>
+</body>
+</html>
